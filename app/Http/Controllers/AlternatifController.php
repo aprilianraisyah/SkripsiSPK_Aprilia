@@ -13,7 +13,11 @@ class AlternatifController extends Controller
     public function index()
     {
        $dataalternatif = Alternatif::orderBy('id', 'asc')->get();
+<<<<<<< HEAD
         return view('/alternatif/\alternatif\dataalternatif', compact('dataalternatif'));
+=======
+        return view('/alternatif/dataalternatif', compact('dataalternatif'));
+>>>>>>> 3d1e00abc308eb153bf38ce329bcf3f08362654a
     }
 
     /**
@@ -21,7 +25,11 @@ class AlternatifController extends Controller
      */
     public function create()
     {
+<<<<<<< HEAD
         return view('tambahalternatif');
+=======
+        return view('/alternatif/tambahalternatif');
+>>>>>>> 3d1e00abc308eb153bf38ce329bcf3f08362654a
     }
 
     /**
@@ -53,7 +61,11 @@ class AlternatifController extends Controller
     public function edit(string $id)
     {
         $dataalternatif=Alternatif::find($id);
+<<<<<<< HEAD
         return view('editalternatif', compact('dataalternatif'));
+=======
+        return view('/alternatif/editalternatif', compact('dataalternatif'));
+>>>>>>> 3d1e00abc308eb153bf38ce329bcf3f08362654a
     }
 
     /**

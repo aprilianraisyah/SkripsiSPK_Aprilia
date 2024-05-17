@@ -357,6 +357,7 @@ Kriteria & Alternatif
                                         <tr>
                                             <td>{{$da->id}}</td>
                                             <td>{{$da->nama_alternatif}}</td>
+<<<<<<< HEAD
                                             <td>    
                                                 <form action="{{ route('alternatif.destroy', $da->id) }}" method="POST">
                                                 <a href="{{ route('alternatif.edit', $da->id) }}" class="btn btn-warning">Edit</a>
@@ -371,6 +372,17 @@ Kriteria & Alternatif
                                                         return confirm('Apakah Anda ingin menghapus data ini?');
                                                     }
                                                     </script>
+=======
+                                            <td>
+                                                <form action="{{ route('alternatif.destroy', $da->id) }}" method="POST">
+                                                    <a href="{{ route('alternatif.edit', $da->id) }}" class="btn btn-warning">Edit</a>
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn btn-danger">Hapus</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+>>>>>>> 3d1e00abc308eb153bf38ce329bcf3f08362654a
                                         @endforeach
                                     </tbody>
                                 </table>
