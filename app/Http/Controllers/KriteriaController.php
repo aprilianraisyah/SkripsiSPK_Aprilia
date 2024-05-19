@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Alternatif;
+use App\Models\Kriteria;
 
-class AlternatifController extends Controller
+class KriteriaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-       $dataalternatif = Alternatif::orderBy('id', 'asc')->get();
-        return view('/alternatif/dataalternatif', compact('dataalternatif'));
+        $datakriteria = Kriteria::orderBy('id', 'asc')->get();
+        return view('/kriteria/datakriteria', compact('datakriteria'));
     }
 
     /**
@@ -21,8 +21,7 @@ class AlternatifController extends Controller
      */
     public function create()
     {
-        return view('/alternatif/tambahalternatif');
-
+        return view('/kriteria/tambahkriteria');
     }
 
     /**
@@ -31,14 +30,17 @@ class AlternatifController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_alternatif' => 'required'
+            'nama_kriteria' => 'required',
+            'bobot' => 'required',
+            'jenis_kriteria' => 'required',
         ]);
 
-        Alternatif::create($request->all());
+        Kriteria::create($request->all());
 
-        return redirect()->route('alternatif')
+        return redirect()->route('kriteria.index')
         ->with('success', 'Data berhasil ditambahkan');
     }
+    
 
     /**
      * Display the specified resource.
@@ -53,9 +55,8 @@ class AlternatifController extends Controller
      */
     public function edit(string $id)
     {
-        $dataalternatif=Alternatif::find($id);
-        return view('/alternatif/editalternatif', compact('dataalternatif'));
-
+        $datakriteria=Kriteria::find($id);
+        return view('/kriteria/editkriteria', compact('datakriteria'));
     }
 
     /**
@@ -64,12 +65,14 @@ class AlternatifController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'nama_alternatif' => 'required'
+            'nama_kriteria' => 'required',
+            'bobot' => 'required',
+            'jenis_kriteria' => 'required',
         ]);
 
-        Alternatif::findOrFail($id)->update($request->all());
+        Kriteria::find($id)->update($request->all());
 
-        return redirect()->route('alternatif')
+        return redirect()->route('kriteria')
         ->with('success', 'Data berhasil diupdate');
     }
 
@@ -78,8 +81,8 @@ class AlternatifController extends Controller
      */
     public function destroy(string $id)
     {
-        Alternatif::find($id)->delete();
-        return redirect()->route('alternatif')
+        Kriteria::find($id)->delete();
+        return redirect()->route('kriteria')
         ->with('success', 'Data berhasil dihapus');
     }
 }

@@ -9,10 +9,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SPK Padi Resort - Alternatif</title>
+    <title>SPK Padi Resort - Tambah Data Kriteria</title>
 
     <!-- Custom fonts for this template -->
-    <link href="vendor/fontawesome/css/all.css" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/vendor/fontawesome/css/all.css') }}" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -27,7 +27,10 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
-    <link href="{{ asset('asset/vendor/fontawesome/css/all.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/fontawesome/css/all.css') }}" rel="stylesheet">
+
+
+    
 
 </head>
 
@@ -138,11 +141,37 @@ Kriteria & Alternatif
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small"
+                                            placeholder="Search for..." aria-label="Search"
+                                            aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>                       
+
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <img class="img-profile rounded-circle"
+                                    src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -151,6 +180,14 @@ Kriteria & Alternatif
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Settings
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Activity Log
+                                </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -158,7 +195,9 @@ Kriteria & Alternatif
                                 </a>
                             </div>
                         </li>
+
                     </ul>
+
                 </nav>
                 <!-- End of Topbar -->
 
@@ -166,63 +205,58 @@ Kriteria & Alternatif
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Data Alternatif</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Tambah Data Alternatif</h1>
+                    <!--<p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
+                        For more information about DataTables, please visit the <a target="_blank"
+                            href="https://datatables.net">official DataTables documentation</a>.</p>-->
 
-                    <!-- DataTables Example -->
+                    <!-- DataTables Example 
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <!--<h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>-->
-                            <a href="{{ route('alternatif.create') }}" class="btn btn-primary btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-add"></i>
-                                </span>
-                                <span class="text">Tambah Data Alternatif</span>
-                            </a>
-                            <!--<button type="button" class="btn btn-primary">+ Tambah Data Alternatif</button> -->
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                @if ($message = Session::get('success'))
-                                    <div class="alert alert-success">
-                                        <p>{{ $message }}</p>
-                                    </div>
-                                @endif
+                            <div class="card-header py-3">
+                                        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                                    <a href="tambahalternatif" class="btn btn-primary btn-icon-split">
+                                        <span class="icon text-white-50">
+                                            <i class="fa-solid fa-plus"></i>
+                                        </span>
+                                        <span class="text">Tambah Data Alternatif</span>
+                                    </a>  
+                            </div>-->
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <div class="card shadow mb-4">    
+                                <div class="col-lg-12">
+                            
+                            <form action="{{ route('kriteria.store') }}" method="POST">
+                                @csrf 
+                                <div class="form-group mt-2">
+                                <label for="nama_kriteria" class="form-label font-weight-bold">Nama Kriteria</label>
+                                <input type="text"  name="nama_kriteria" placeholder="Masukkan Nama Kriteria" class="form-control">
+                                </div>
 
-                                <table class="table table-striped table-bordered mt-3 mb-3" id="dataTable" style="width:100%">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Nama Alternatif</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    
-                                    <tbody>
-                                        @foreach($dataalternatif as $da)
-                                        <tr>
-                                            <td>{{$da->id}}</td>
-                                            <td>{{$da->nama_alternatif}}</td>
-                                            <td>    
-                                                <form action="{{ route('alternatif.destroy', $da->id) }}" method="POST">
-                                                <a href="{{ route('alternatif.edit', $da->id) }}" class="btn btn-warning">Edit</a>
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="btn btn-danger" onclick="return confirmDeletion()">Hapus</button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                                    <script>
-                                                    function confirmDeletion() {
-                                                        return confirm('Apakah Anda ingin menghapus data ini?');
-                                                    }
-                                                    </script>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                                <div class="form-group mt-2">
+                                <label for="bobot" class="form-label font-weight-bold">Bobot</label>
+                                <input type="text"  name="bobot" placeholder="Masukkan Bobot" class="form-control">
+                                </div>
+
+                                <div class="form-group mt-2">
+                                    <label for="jenis_kriteria">Jenis Kriteria</label>
+                                    <select class="form-control" id="jenis_kriteria" name="jenis_kriteria">
+                                        <option value="Cost">Cost</option>
+                                        <option value="Benefit">Benefit</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                </div>
+                            </form>
+                            </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                                
+                            
+                    
                 <!-- /.container-fluid -->
 
             </div>
@@ -295,6 +329,7 @@ Kriteria & Alternatif
             $("#dataTable").DataTable();
         });
     </script>
+    
 </body>
 
 </html>

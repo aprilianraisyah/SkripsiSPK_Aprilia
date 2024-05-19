@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SPK Padi Resort - Alternatif</title>
+    <title>SPK Padi Resort - Kriteria</title>
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome/css/all.css" rel="stylesheet" type="text/css">
@@ -166,17 +166,17 @@ Kriteria & Alternatif
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Data Alternatif</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Data Kriteria</h1>
 
                     <!-- DataTables Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <!--<h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>-->
-                            <a href="{{ route('alternatif.create') }}" class="btn btn-primary btn-icon-split">
+                            <a href="{{ route('kriteria.create') }}" class="btn btn-primary btn-icon-split">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-add"></i>
                                 </span>
-                                <span class="text">Tambah Data Alternatif</span>
+                                <span class="text">Tambah Data Kriteria</span>
                             </a>
                             <!--<button type="button" class="btn btn-primary">+ Tambah Data Alternatif</button> -->
                         </div>
@@ -192,19 +192,22 @@ Kriteria & Alternatif
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Nama Alternatif</th>
-                                            <th>Aksi</th>
+                                            <th>Nama Kriteria</th>
+                                            <th>Bobot</th>
+                                            <th>Jenis Kriteria</th>
                                         </tr>
                                     </thead>
                                     
                                     <tbody>
-                                        @foreach($dataalternatif as $da)
+                                        @foreach($datakriteria as $dk)
                                         <tr>
-                                            <td>{{$da->id}}</td>
-                                            <td>{{$da->nama_alternatif}}</td>
+                                            <td>{{$dk->id}}</td>
+                                            <td>{{$dk->nama_kriteria}}</td>
+                                            <td>{{$dk->bobot}}</td>
+                                            <td>{{$dk->jenis_kriteria}}</td>
                                             <td>    
-                                                <form action="{{ route('alternatif.destroy', $da->id) }}" method="POST">
-                                                <a href="{{ route('alternatif.edit', $da->id) }}" class="btn btn-warning">Edit</a>
+                                                <form action="{{ route('kriteria.destroy', $dk->id) }}" method="POST">
+                                                <a href="{{ route('kriteria.edit', $dk->id) }}" class="btn btn-warning">Edit</a>
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-danger" onclick="return confirmDeletion()">Hapus</button>

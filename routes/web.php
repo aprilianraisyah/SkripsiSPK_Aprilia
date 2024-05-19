@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AlternatifController;
+use App\Http\Controllers\KriteriaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,13 +22,10 @@ use App\Http\Controllers\AlternatifController;
 
 Route::resource('alternatif', AlternatifController::class);
 
-Route::get('/kriteria', function () {
-    return view('datakriteria');
-});
+Route::resource('kriteria', KriteriaController::class);
+Route::put('/kriteria/{kriteria}', [KriteriaController::class, 'update'])->name('kriteria.update');
 
-Route::get('/alternatif', function () {
-    return view('dataalternatif');
-});
+
 
 Route::get('/penghitungan', function () {
     return view('penghitungan');
