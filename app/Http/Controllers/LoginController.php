@@ -2,31 +2,41 @@
 
 namespace App\Http\Controllers;
 
+use Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class loginController extends Controller
+class LoginController extends Controller
 {
-    public function index(){
+    
+    public function index()
+    {
         return view('auth.login');
     }
 
-    public function login(Request $request){
-        $request->validate([
-            'username'=>'required',
-            'password'=>'required'
-        ],[
-            'username.required'=>'Masukkan username yang telah terdaftar pada sistem',
-            'password.required'=>'Masukkan password yang telah terdaftar pada sistem'
+    public function loginStore(Request $request)
+    {
+        $data= $request->validate([
+            'email'=>'required',
+            'password'=>'required',
         ]);
-        $infologin = [
-            'username'=>$request->username,
-            'password'=>$request->password
-        ];
-        if(Auth::attempt($infologin)){
-            return 'sukses';
-        } else {
-            return 'gagal';
+
+        if(Auth::attempt($data)){
+            $request->session()->regenerate();
+            return redirect()->route('dashboard');
+        } else{
+            return redirect()->route('login')->with('failed', 'Email atau Password Salah');
         }
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect()->route('login');
     }
 }

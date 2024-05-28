@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AlternatifController;
 use App\Http\Controllers\KriteriaController;
@@ -16,16 +17,26 @@ use App\Http\Controllers\KriteriaController;
 |
 */
 
-/*Route::get('/dashboard', function () {
-    return view('dashboard');
-});*/
+/*dashboard*/
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+/*login&auth*/
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'loginStore'])->name('loginPost');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+/*global alternatif*/
 Route::resource('alternatif', AlternatifController::class);
+Route::get('/alternatif', [AlternatifController::class, 'index'])->name('alternatif');
+Route::get('/create', [AlternatifController::class, 'create']);
+Route::post('/store', [AlternatifController::class, 'store']);
 
+/*global kriteria*/
 Route::resource('kriteria', KriteriaController::class);
+Route::get('/kriteria', [KriteriaController::class, 'index'])->name('kriteria');
+Route::get('/create', [KriteriaController::class, 'create']);
+Route::post('/store', [KriteriaController::class, 'store']);
 Route::put('/kriteria/{kriteria}', [KriteriaController::class, 'update'])->name('kriteria.update');
-
-
 
 Route::get('/penghitungan', function () {
     return view('penghitungan');
@@ -35,17 +46,7 @@ Route::get('/rekomendasi', function () {
     return view('rekomendasi');
 });
 
-/*Route::get('/login', function () {
-    return view('auth/login');
-});*/
-
-Route::get('/login', [loginController::class, 'index']);
-Route::post('/login/autentikasi', [loginController::class, 'login']);
-
-/*route login
-Route::get('/login', [LoginController::class, 'index'])->name('login');*/
-
-/*route alternatif*/
+/*route alternatif
 Route::get('/alternatif', [AlternatifController::class, 'index'])->name('alternatif');
 
 Route::get('/tambahalternatif', function () {
@@ -58,3 +59,4 @@ Route::post('/store', [AlternatifController::class, 'store']);
 Route::get('/tambahkriteria', function () {
     return view('tambahkriteria');
 });
+*/

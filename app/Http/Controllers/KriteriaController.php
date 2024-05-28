@@ -37,7 +37,7 @@ class KriteriaController extends Controller
 
         Kriteria::create($request->all());
 
-        return redirect()->route('kriteria.index')
+        return redirect()->route('kriteria')
         ->with('success', 'Data berhasil ditambahkan');
     }
     
@@ -70,7 +70,11 @@ class KriteriaController extends Controller
             'jenis_kriteria' => 'required',
         ]);
 
-        Kriteria::find($id)->update($request->all());
+        Kriteria::find($id)->update([
+            'nama_kriteria' => $request->nama_kriteria,
+            'bobot' => $request->bobot,
+            'jenis_kriteria' => $request->jenis_kriteria,
+        ]);
 
         return redirect()->route('kriteria')
         ->with('success', 'Data berhasil diupdate');

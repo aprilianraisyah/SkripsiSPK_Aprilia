@@ -195,6 +195,7 @@ Kriteria & Alternatif
                                             <th>Nama Kriteria</th>
                                             <th>Bobot</th>
                                             <th>Jenis Kriteria</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     

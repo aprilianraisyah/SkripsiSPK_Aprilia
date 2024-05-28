@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Login - SPK Padi Heritage Resort</title>
+    <title>SPK Padi Heritage Resort - Login</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -39,32 +39,37 @@
                             <div class="logo">
                                 <img src="{{ asset('assets/img/logopadi.png') }}" style="width=150px;height=50px" >
                             </div>
-                            <form action="/login/autentikasi" method="POST">
-                                @csrf
+        
                             <div class="col-lg-12">
                                 <div class="p-5">
                                     <div class="text-center">
                                         <h1 class="h5 text-gray-900 mb-4">Sistem Pendukung Keputusan Pemilihan Bahan Baku Dapur Padi Heritage Resort Kota Malang</h1>
                                         <!--<h1 class="h6 text-gray-900 mb-4">Login Terlebih Dahulu</h1>-->
                                     </div>
-                                    <form class="user">
+                                    
+                                    @if (session()->has('failed'))
+                                    <p class="text-danger">{{ session('failed') }}</p>
+                                    @endif
+
+                                    <form action= "" method="POST">
+                                    @csrf
                                         <div class="form-group">
-                                            <input type="username" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Username">
+                                            <input type="email" class="form-control form-control-user"
+                                                id="email" name="email" placeholder="Email"></input>
+                                            @error('email')
+                                                <small>{{ $message }}</small>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
+                                                id="password" name="password"  
+                                                placeholder="Password">
+                                            @error('email')
+                                                <small>{{ $message }}</small>
+                                            @enderror  
                                         </div>
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember
-                                                    Me</label>
-                                            </div>
-                                        </div>
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
+                                        
+                                        <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Login
                                         </a>
                                         <!--<a href="index.html" class="btn btn-google btn-user btn-block">
@@ -72,7 +77,8 @@
                                         </a>
                                         <a href="index.html" class="btn btn-facebook btn-user btn-block">
                                             <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                                        </a>-->
+                                        </a>
+                                    action="{{ route('login') }}-->
                                     </form>
                                     <!--<div class="text-center">
                                         <a class="small" href="forgot-password.html">Forgot Password?</a>
