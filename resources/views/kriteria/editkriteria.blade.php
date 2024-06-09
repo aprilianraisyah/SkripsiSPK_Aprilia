@@ -236,6 +236,15 @@ Kriteria & Alternatif
                                     </select>
                                 </div>
 
+                                <div class="form-group mt-2">
+                                    <label for="jenis_kriteria">Nilai Kepentingan</label>
+                                    <select class="form-control" id="nilai_kepentingan" name="nilai_kepentingan">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                </div>
+
                                 <div class="form-group">
                                 <div class="d-flex justify-content-center">
                                     <button type="submit" class="btn btn-primary">Simpan</button>

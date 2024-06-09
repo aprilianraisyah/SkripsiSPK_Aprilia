@@ -195,6 +195,7 @@ Kriteria & Alternatif
                                             <th>Nama Kriteria</th>
                                             <th>Bobot</th>
                                             <th>Jenis Kriteria</th>
+                                            <th>Nilai Kepentingan</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -206,6 +207,7 @@ Kriteria & Alternatif
                                             <td>{{$dk->nama_kriteria}}</td>
                                             <td>{{$dk->bobot}}</td>
                                             <td>{{$dk->jenis_kriteria}}</td>
+                                            <td>{{$dk->nilai_kepentingan}}</td>
                                             <td>    
                                                 <form action="{{ route('kriteria.destroy', $dk->id) }}" method="POST">
                                                 <a href="{{ route('kriteria.edit', $dk->id) }}" class="btn btn-warning">Edit</a>

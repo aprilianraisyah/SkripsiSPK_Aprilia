@@ -81,10 +81,17 @@
 
             <!-- Nav Item - Penghitungan -->
             <li class="nav-item">
-                <a class="nav-link" href="penghitungan">
+                <a class="nav-link" href="penilaianalternatif">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Penghitungan</span></a>
+                    <span>Penilaian Alternatif</span></a>
             </li>
+
+            <!-- Nav Item - Penghitungan -->
+            <li class="nav-item">
+                    <a class="nav-link" href="penghitungan">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Penghitungan</span></a>
+                </li>
 
             <!-- Nav Item - Rekomendasi -->
             <li class="nav-item">
@@ -117,7 +124,9 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                    <div class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                      {{  Auth::user()->name }}
+                                    </div>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -156,7 +165,7 @@
                                         <div class="col mr-3">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Total Data Kriteria</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $kriteriaCount }}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -174,7 +183,7 @@
                                         <div class="col mr-3">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Total Data Alternatif</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $alternatifCount }}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>

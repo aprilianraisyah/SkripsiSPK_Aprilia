@@ -205,7 +205,7 @@ Kriteria & Alternatif
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Tambah Data Alternatif</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Tambah Data Kriteria</h1>
                     <!--<p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
                         For more information about DataTables, please visit the <a target="_blank"
                             href="https://datatables.net">official DataTables documentation</a>.</p>-->
@@ -243,6 +243,15 @@ Kriteria & Alternatif
                                     <select class="form-control" id="jenis_kriteria" name="jenis_kriteria">
                                         <option value="Cost">Cost</option>
                                         <option value="Benefit">Benefit</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group mt-2">
+                                    <label for="jenis_kriteria">Nilai Kepentingan</label>
+                                    <select class="form-control" id="nilai_kepentingan" name="nilai_kepentingan">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
                                     </select>
                                 </div>
                                 <div class="form-group">

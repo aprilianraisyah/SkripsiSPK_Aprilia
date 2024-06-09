@@ -42,6 +42,10 @@ Route::get('/penghitungan', function () {
     return view('penghitungan');
 });
 
+Route::get('/penilaianalternatif', function () {
+    return view('/penghitungan/penilaianalternatif');
+});
+
 Route::get('/rekomendasi', function () {
     return view('rekomendasi');
 });
