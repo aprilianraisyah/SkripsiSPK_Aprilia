@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SPK Padi Resort - Edit Data Kriteria</title>
+    <title>SPK Padi Resort - Subkriteria</title>
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome/css/all.css" rel="stylesheet" type="text/css">
@@ -21,14 +21,13 @@
     <link href="{{ asset('assets/css/sb-admin-2.css') }}" rel="stylesheet">
 
     <!-- Custom styles for this page -->
-    <link href="{{ asset('assets/css/dataTables.bootstrap4.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.bootstrap4.css">
 
-    <!-- Icon 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
+    <!-- Icon -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
-    <link href="{{ asset('vendor/fontawesome/css/all.css') }}" rel="stylesheet">
-    
+    <link href="{{ asset('asset/vendor/fontawesome/css/all.css') }}" rel="stylesheet">
 
 </head>
 
@@ -131,30 +130,6 @@
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
-
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
@@ -185,63 +160,67 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Edit Data Kriteria</h1>
-                    <!--<p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p>-->
+                    <h1 class="h3 mb-2 text-gray-800">Data Subkriteria</h1>
 
-                    <!-- DataTables Example 
+                    <!-- DataTables Example -->
                     <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-                                    <a href="tambahalternatif" class="btn btn-primary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fa-solid fa-plus"></i>
-                                        </span>
-                                        <span class="text">Tambah Data Alternatif</span>
-                                    </a>  
-                            </div>-->
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <div class="card shadow mb-4">    
-                                <div class="col-lg-12">
-                            
-                            <form action="{{ route('kriteria.update', ['kriteria' => $datakriteria->id]) }}" method="POST">
-                                @csrf 
-                                @method('PUT')
-                                <div class="form-group mt-2">
-                                <label for="nama_kriteria" class="form-label font-weight-bold">Nama Kriteria</label>
-                                <input type="text" name="nama_kriteria" class="form-control" value="{{ $datakriteria->nama_kriteria }}">
-                                </div>
+                        <div class="card-header py-3">
+                            <!--<h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>-->
+                            <a href="{{ route('subkriteria.create') }}" class="btn btn-primary btn-icon-split">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-add"></i>
+                                </span>
+                                <span class="text">Tambah Data Subkriteria</span>
+                            </a>
+                            <!--<button type="button" class="btn btn-primary">+ Tambah Data Alternatif</button> -->
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                @if ($message = Session::get('success'))
+                                    <div class="alert alert-success">
+                                        <p>{{ $message }}</p>
+                                    </div>
+                                @endif
 
-                                <div class="form-group mt-2">
-                                    <label for="bobot" class="form-label font-weight-bold">Bobot</label>
-                                    <input type="text"  name="bobot" class="form-control" value="{{ $datakriteria->bobot }}">
-                                </div>
-
-                                <div class="form-group mt-2">
-                                    <label for="jenis_kriteria">Jenis Kriteria</label>
-                                    <select class="form-control" id="jenis_kriteria" name="jenis_kriteria">
-                                        <option value="{{ $datakriteria->jenis_kriteria }}">{{$datakriteria->jenis_kriteria}}</option>
-                                        <option value="Cost">Cost</option>
-                                        <option value="Benefit">Benefit</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                <div class="d-flex justify-content-center">
-                                    <button type="submit" class="btn btn-primary">Simpan</button>
-                                </div>
-                                
-                                
-                            </form>
-                            </div>
+                                <table class="table table-striped table-bordered mt-3 mb-3" id="dataTable" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Nama Kriteria</th>
+                                            <th>Bobot</th>
+                                            <th>Nilai Subkriteria</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody>
+                                        @foreach($datasubkriteria as $dsk)
+                                        <tr>
+                                            <td>{{$dsk->id}}</td>
+                                            <td>{{$dsk->kriteria->nama_kriteria}}</td>
+                                            <td>{{$dsk->kriteria->bobot}}</td>
+                                            <td>{{$dsk->nilai_subkriteria}}</td>
+                                            <td>    
+                                                <form action="{{ route('subkriteria.destroy', $dsk->id) }}" method="POST">
+                                                <a href="{{ route('subkriteria.edit', $dsk->id) }}" class="btn btn-warning">Edit</a>
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-danger" onclick="return confirmDeletion()">Hapus</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                                    <script>
+                                                    function confirmDeletion() {
+                                                        return confirm('Apakah Anda ingin menghapus data ini?');
+                                                    }
+                                                    </script>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-                                
-                            
-                    
+                </div>
                 <!-- /.container-fluid -->
 
             </div>
@@ -289,22 +268,31 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="{{ asset('assets/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="{{ asset('assets/js/sb-admin-2.min.js') }}"></script>
 
     <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="{{ asset('assets/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
+    <script src="{{ asset('assets/js/demo/datatables-demo.js') }}"></script>
 
+    <!-- Data Tables -->
+    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.bootstrap4.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("#dataTable").DataTable();
+        });
+    </script>
 </body>
 
 </html>

@@ -9,10 +9,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SPK Padi Resort - Edit Data Kriteria</title>
+    <title>SPK Padi Resort - Tambah Data Subkriteria</title>
 
     <!-- Custom fonts for this template -->
-    <link href="vendor/fontawesome/css/all.css" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/vendor/fontawesome/css/all.css') }}" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -21,13 +21,15 @@
     <link href="{{ asset('assets/css/sb-admin-2.css') }}" rel="stylesheet">
 
     <!-- Custom styles for this page -->
-    <link href="{{ asset('assets/css/dataTables.bootstrap4.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.bootstrap4.css">
 
-    <!-- Icon 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
+    <!-- Icon -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
     <link href="{{ asset('vendor/fontawesome/css/all.css') }}" rel="stylesheet">
+
+
     
 
 </head>
@@ -153,7 +155,7 @@
                                     </div>
                                 </form>
                             </div>
-                        </li>
+                        </li>                       
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
@@ -170,6 +172,14 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Settings
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Activity Log
+                                </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -177,7 +187,9 @@
                                 </a>
                             </div>
                         </li>
+
                     </ul>
+
                 </nav>
                 <!-- End of Topbar -->
 
@@ -185,7 +197,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Edit Data Kriteria</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Tambah Data Subkriteria</h1>
                     <!--<p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
                         For more information about DataTables, please visit the <a target="_blank"
                             href="https://datatables.net">official DataTables documentation</a>.</p>-->
@@ -206,34 +218,45 @@
                             <div class="card shadow mb-4">    
                                 <div class="col-lg-12">
                             
-                            <form action="{{ route('kriteria.update', ['kriteria' => $datakriteria->id]) }}" method="POST">
+                            <form action="{{ route('subkriteria.store') }}" method="POST">
                                 @csrf 
-                                @method('PUT')
                                 <div class="form-group mt-2">
                                 <label for="nama_kriteria" class="form-label font-weight-bold">Nama Kriteria</label>
-                                <input type="text" name="nama_kriteria" class="form-control" value="{{ $datakriteria->nama_kriteria }}">
-                                </div>
-
-                                <div class="form-group mt-2">
-                                    <label for="bobot" class="form-label font-weight-bold">Bobot</label>
-                                    <input type="text"  name="bobot" class="form-control" value="{{ $datakriteria->bobot }}">
-                                </div>
-
-                                <div class="form-group mt-2">
-                                    <label for="jenis_kriteria">Jenis Kriteria</label>
-                                    <select class="form-control" id="jenis_kriteria" name="jenis_kriteria">
-                                        <option value="{{ $datakriteria->jenis_kriteria }}">{{$datakriteria->jenis_kriteria}}</option>
-                                        <option value="Cost">Cost</option>
-                                        <option value="Benefit">Benefit</option>
+                                    <select class="form-control" name="kriteria_id">
+                                        <option disabled value>Pilih Kriteria</option>
+                                        @foreach ($kriteria as $krt)
+                                        <option value="{{ $krt->id }}">{{ $krt->nama_kriteria }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 
+                                <div class="form-group mt-2">
+                                <label for="bobot" class="form-label font-weight-bold">Bobot</label>
+                                    <select class="form-control" name="bobot">
+                                        <option disabled value>Pilih Bobot</option>
+                                        @foreach ($kriteria as $krt)
+                                        <option value="{{ $krt->id }}">{{ $krt->bobot }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="form-group mt-2">
+                                <label for="nilai_subkriteria" class="form-label font-weight-bold">Nilai Subkriteria</label>
+                                <input type="text"  name="nilai_subkriteria" placeholder="Masukkan Nilai Subkriteria 1-3" class="form-control">
+                                </div>
+
+                                <!-- <div class="form-group mt-2">
+                                    <label for="nilai_subkriteria">Nilai Subkriteria</label>
+                                    <select class="form-control" id="nilai_subkriteria" name="nilai_subkriteria">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                </div> -->
                                 <div class="form-group">
                                 <div class="d-flex justify-content-center">
                                     <button type="submit" class="btn btn-primary">Simpan</button>
                                 </div>
-                                
-                                
                             </form>
                             </div>
                             </div>
@@ -289,22 +312,32 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="{{ asset('assets/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="{{ asset('assets/js/sb-admin-2.min.js') }}"></script>
 
     <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="{{ asset('assets/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
+    <script src="{{ asset('assets/js/demo/datatables-demo.js') }}"></script>
 
+    <!-- Data Tables -->
+    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.bootstrap4.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("#dataTable").DataTable();
+        });
+    </script>
+    
 </body>
 
 </html>

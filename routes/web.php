@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AlternatifController;
 use App\Http\Controllers\KriteriaController;
+use App\Http\Controllers\SubkriteriaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,13 @@ Route::get('/kriteria', [KriteriaController::class, 'index'])->name('kriteria');
 Route::get('/create', [KriteriaController::class, 'create']);
 Route::post('/store', [KriteriaController::class, 'store']);
 Route::put('/kriteria/{kriteria}', [KriteriaController::class, 'update'])->name('kriteria.update');
+
+/*global subkriteria*/
+Route::resource('subkriteria', SubkriteriaController::class);
+Route::get('/subkriteria', [SubkriteriaController::class, 'index'])->name('subkriteria');
+Route::get('/create', [SubkriteriaController::class, 'create']);
+Route::post('/store', [SubkriteriaController::class, 'store']);
+Route::put('/subkriteria/{subkriteria}', [SubkriteriaController::class, 'update'])->name('subkriteria.update');
 
 Route::get('/penghitungan', function () {
     return view('penghitungan');

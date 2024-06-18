@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('penilaianalternatifs', function (Blueprint $table) {
+        Schema::create('subkriterias', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('alternatif_id')->constrained('alternatifs'); //foreign key
-            $table->foreignId('kriteria_id')->constrained('kriterias'); //foreign key
-        
-            $table->float('nilai_kecocokan');
+            $table->unsignedBigInteger('kriteria_id');
+            $table->foreign('kriteria_id')->references('id')->on('kriterias')->onDelete('cascade'); //foreign key
+            $table->float('nilai_subkriteria');
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('penilaianalternatifs');
+        Schema::dropIfExists('subkriterias');
     }
 };

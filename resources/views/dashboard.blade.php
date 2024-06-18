@@ -70,6 +70,13 @@
                     <span>Data Alternatif</span></a>
             </li>
 
+            <!-- Nav Item -  Data Subkriteria -->
+            <li class="nav-item">
+                <a class="nav-link" href="subkriteria">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Data Subkriteria</span></a>
+            </li>
+
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -78,13 +85,6 @@
             <div class="sidebar-heading">
                 Penghitungan
             </div>
-
-            <!-- Nav Item - Penghitungan -->
-            <li class="nav-item">
-                <a class="nav-link" href="penilaianalternatif">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Penilaian Alternatif</span></a>
-            </li>
 
             <!-- Nav Item - Penghitungan -->
             <li class="nav-item">
@@ -199,7 +199,7 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-3">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Rekomendasi</div>
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Data Subkriteria</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
                                         </div>
                                     </div>

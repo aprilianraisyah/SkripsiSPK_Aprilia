@@ -36,73 +36,80 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-                <!-- Sidebar -->
-                <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-<!-- Sidebar - Brand -->
-<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-    <div class="sidebar-brand-icon rotate-n-15">
-        <i class="fas fa-laugh-wink"></i>
-    </div>
-    <div class="sidebar-brand-text mx-10">SPK Padi Heritage Resort</div>
-</a>
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-10">SPK Padi Heritage Resort</div>
+            </a>
 
-<!-- Divider -->
-<hr class="sidebar-divider my-0">
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
 
-<!-- Nav Item - Dashboard -->
-<li class="nav-item active">
-    <a class="nav-link" href="dashboard">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Dashboard</span></a>
-</li>
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="dashboard">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
 
-<!-- Divider -->
-<hr class="sidebar-divider">
+            <!-- Divider -->
+            <hr class="sidebar-divider">
 
-<!-- Heading -->
-<div class="sidebar-heading">
-Kriteria & Alternatif
-</div>
+            <!-- Heading -->
+            <div class="sidebar-heading">
+            Kriteria & Alternatif
+            </div>
 
-<!-- Nav Item - Data Kriteria -->
-<li class="nav-item">
-    <a class="nav-link" href="kriteria">
-        <i class="fas fa-fw fa-table"></i>
-        <span>Data Kriteria</span></a>
-</li>
+            <!-- Nav Item - Data Kriteria -->
+            <li class="nav-item">
+                <a class="nav-link" href="kriteria">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Data Kriteria</span></a>
+            </li>
 
-<!-- Nav Item - Data Alternatif -->
-<li class="nav-item">
-    <a class="nav-link" href="alternatif">
-        <i class="fas fa-fw fa-table"></i>
-        <span>Data Alternatif</span></a>
-</li>
+            <!-- Nav Item - Data Alternatif -->
+            <li class="nav-item">
+                <a class="nav-link" href="alternatif">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Data Alternatif</span></a>
+            </li>
+
+            <!-- Nav Item -  Data Subkriteria -->
+            <li class="nav-item">
+                <a class="nav-link" href="subkriteria">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Data Subkriteria</span></a>
+            </li>
 
 
-<!-- Divider -->
-<hr class="sidebar-divider">
+            <!-- Divider -->
+            <hr class="sidebar-divider">
 
-<!-- Heading -->
-<div class="sidebar-heading">
-    Penghitungan
-</div>
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Penghitungan
+            </div>
 
-<!-- Nav Item - Penghitungan -->
-<li class="nav-item">
-    <a class="nav-link" href="penghitungan">
-        <i class="fas fa-fw fa-table"></i>
-        <span>Penghitungan</span></a>
-</li>
+            <!-- Nav Item - Penghitungan -->
+            <li class="nav-item">
+                    <a class="nav-link" href="penghitungan">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Penghitungan</span></a>
+                </li>
 
-<!-- Nav Item - Rekomendasi -->
-<li class="nav-item">
-    <a class="nav-link" href="rekomendasi">
-        <i class="fas fa-fw fa-table"></i>
-        <span>Rekomendasi</span></a>
-</li>
-</ul>
-<!-- End of Sidebar -->
+            <!-- Nav Item - Rekomendasi -->
+            <li class="nav-item">
+                <a class="nav-link" href="rekomendasi">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Rekomendasi</span></a>
+            </li>
+        </ul>
+        <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -120,21 +127,6 @@ Kriteria & Alternatif
                         </button>
                     </form>
 
-                    <!-- Topbar Search 
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                    -->
-
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
@@ -142,9 +134,11 @@ Kriteria & Alternatif
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                    <div class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                      {{  Auth::user()->name }}
+                                    </div>
                             </a>
-                            <!-- Dropdown - User Information -->
+                        <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
@@ -195,7 +189,6 @@ Kriteria & Alternatif
                                             <th>Nama Kriteria</th>
                                             <th>Bobot</th>
                                             <th>Jenis Kriteria</th>
-                                            <th>Nilai Kepentingan</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -207,7 +200,6 @@ Kriteria & Alternatif
                                             <td>{{$dk->nama_kriteria}}</td>
                                             <td>{{$dk->bobot}}</td>
                                             <td>{{$dk->jenis_kriteria}}</td>
-                                            <td>{{$dk->nilai_kepentingan}}</td>
                                             <td>    
                                                 <form action="{{ route('kriteria.destroy', $dk->id) }}" method="POST">
                                                 <a href="{{ route('kriteria.edit', $dk->id) }}" class="btn btn-warning">Edit</a>
