@@ -199,8 +199,9 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-3">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Data Subkriteria</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Total Data Subkriteria</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $subkriteriaCount }}</div>
                                         </div>
                                     </div>
                                 </div>

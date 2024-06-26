@@ -33,6 +33,7 @@ class SubkriteriaController extends Controller
     {
         $request->validate([
             'kriteria_id' => 'required',
+            'bobot' => 'required',
             'nilai_subkriteria' => 'required',
         ]);
 
@@ -69,6 +70,7 @@ class SubkriteriaController extends Controller
         
         $request->validate([
             'kriteria_id' => 'required',
+            'bobot' => 'required',
             'nilai_subkriteria' => 'required',
         ]);
 

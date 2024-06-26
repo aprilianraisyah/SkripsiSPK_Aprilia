@@ -36,7 +36,7 @@ class AlternatifController extends Controller
 
         Alternatif::create($request->all());
 
-        return redirect()->route('alternatif.index')
+        return redirect()->route('alternatif')
         ->with('success', 'Data berhasil ditambahkan');
     }
 

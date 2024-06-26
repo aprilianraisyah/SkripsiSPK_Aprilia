@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('kriteria_id');
             $table->foreign('kriteria_id')->references('id')->on('kriterias')->onDelete('cascade'); //foreign key
+            $table->float('bobot');
             $table->float('nilai_subkriteria');
             $table->timestamps();
         });
